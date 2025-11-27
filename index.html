@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Explicitly mentioning Workshop in the title -->
     <title>AgenticOS 2026 | Operating Systems Design for AI Agents</title>
+    
+    <!-- SEO & Social Sharing Meta Tags -->
+    <meta name="description" content="The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026. Explore primitives, isolation models, and scheduling for agent workloads.">
+    <meta property="og:title" content="AgenticOS 2026 | Workshop on OS Design for AI Agents">
+    <meta property="og:description" content="Call for Papers: The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026 in Pittsburgh.">
+    <meta property="og:type" content="website">
+    <!-- <meta property="og:image" content="https://your-website.com/social-preview.png"> -->
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -66,20 +74,41 @@
 <body class="bg-white text-slate-800 font-sans antialiased selection:bg-academic-100 selection:text-academic-900">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
+                <!-- Logo area -->
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <img src="icon.png" alt="Logo" class="w-8 h-8 rounded-full">
                     <!-- Added 'Workshop' to the navbar brand for clarity -->
                     <span class="font-mono font-bold text-xl tracking-tight text-slate-900">AgenticOS Workshop '26</span>
                 </div>
+
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#about" class="text-slate-600 hover:text-academic-800 transition-colors">Call for Papers</a>
                     <a href="#topics" class="text-slate-600 hover:text-academic-800 transition-colors">Topics</a>
                     <a href="#dates" class="text-slate-600 hover:text-academic-800 transition-colors">Dates</a>
                     <a href="#submission" class="px-4 py-2 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors">Submit</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-slate-500 hover:text-slate-800 focus:outline-none p-2" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div class="hidden md:hidden border-t border-slate-100 bg-white" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50">Call for Papers</a>
+                <a href="#topics" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50">Topics</a>
+                <a href="#dates" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50">Dates</a>
+                <a href="#submission" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-academic-800 font-bold hover:bg-slate-50">Submit Paper</a>
             </div>
         </div>
     </nav>
@@ -259,10 +288,18 @@
                     </ul>
                     <div class="mt-8 pt-4 border-t border-white/10">
                          <!-- Disabled Button State -->
-                         <button disabled class="w-full py-2 bg-slate-700 text-slate-400 font-bold rounded cursor-not-allowed text-sm">
+                         <button disabled title="Submission link will be available soon" class="w-full py-2 bg-slate-700 text-slate-400 font-bold rounded cursor-not-allowed text-sm">
                             Submit via HotCRP
                         </button>
                         <p class="text-xs text-slate-400 mt-2 text-center">*Link coming soon</p>
+                    </div>
+                </div>
+
+                <!-- Program Committee (Added) -->
+                <div class="bg-white border border-slate-200 rounded-lg p-6">
+                    <h3 class="font-serif font-bold text-slate-900 mb-4">Program Committee</h3>
+                    <div class="text-center py-4 bg-slate-50 rounded border border-slate-100 border-dashed">
+                        <p class="text-sm text-slate-500 italic">To be announced</p>
                     </div>
                 </div>
 
@@ -314,15 +351,41 @@
             <p class="font-mono text-sm text-slate-500">
                 AgenticOS 2026 @ ASPLOS '26
             </p>
-            <p class="text-xs text-slate-400 mt-2">
+            <!-- <p class="text-xs text-slate-400 mt-2">
                 &copy; 2026 ACM. All rights reserved.
-            </p>
+            </p> -->
         </div>
     </footer>
 
     <!-- Init Lucide Icons -->
     <script>
         lucide.createIcons();
+    </script>
+    
+    <!-- Mobile Menu Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-link');
+
+            if(btn && menu) {
+                // Toggle menu on button click
+                btn.addEventListener('click', function() {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !expanded);
+                    menu.classList.toggle('hidden');
+                });
+
+                // Close menu when a link is clicked
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>
