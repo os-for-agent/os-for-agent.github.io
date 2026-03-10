@@ -3,30 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Explicitly mentioning Workshop in the title -->
     <title>AgenticOS 2026 | Operating Systems Design for AI Agents</title>
     
-    <!-- SEO & Social Sharing Meta Tags -->
     <meta name="description" content="The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026. Explore primitives, isolation models, and scheduling for agent workloads.">
     <meta property="og:title" content="AgenticOS 2026 | Workshop on OS Design for AI Agents">
     <meta property="og:description" content="Call for Papers: The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026 in Pittsburgh.">
     <meta property="og:type" content="website">
-    <!-- <meta property="og:image" content="https://your-website.com/social-preview.png"> -->
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="icon.png">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter for UI, JetBrains Mono for "Code/OS" feel, Merriweather for headers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Merriweather:ital,wght@0,300;0,700;0,900;1,300&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -73,18 +66,14 @@
 </head>
 <body class="bg-white text-slate-800 font-sans antialiased selection:bg-academic-100 selection:text-academic-900">
 
-    <!-- Navigation -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <!-- Logo area -->
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <img src="icon.png" alt="Logo" class="w-8 h-8 rounded-full">
-                    <!-- Added 'Workshop' to the navbar brand for clarity -->
                     <span class="font-mono font-bold text-xl tracking-tight text-slate-900">AgenticOS Workshop '26</span>
                 </div>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#about" class="text-slate-600 hover:text-academic-800 transition-colors">Call for Papers</a>
                     <a href="#schedule" class="text-slate-600 hover:text-academic-800 transition-colors">Schedule</a>
@@ -93,7 +82,6 @@
                     <a href="#submission" class="px-4 py-2 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors">Submit</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="flex items-center md:hidden">
                     <button id="mobile-menu-btn" type="button" class="text-slate-500 hover:text-slate-800 focus:outline-none p-2" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
@@ -103,7 +91,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Panel (Hidden by default) -->
         <div class="hidden md:hidden border-t border-slate-100 bg-white" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
                 <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50">Call for Papers</a>
@@ -115,10 +102,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="absolute inset-0 -z-10">
-            <!-- Subtle Grid Background -->
             <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
             <div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-academic-600 opacity-20 blur-[100px]"></div>
         </div>
@@ -150,14 +135,11 @@
         </div>
     </header>
 
-    <!-- Main Content Layout -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            <!-- Left Column: Main Content -->
             <main class="lg:col-span-8 space-y-16">
                 
-                <!-- About / Overview -->
                 <section id="about" class="prose prose-slate max-w-none prose-headings:font-serif prose-headings:font-bold prose-a:text-academic-600">
                     <h2  class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2">Overview</h2>
                     <p>
@@ -169,7 +151,6 @@
                     </p>
                 </section>
 
-                <!-- Workshop Schedule -->
                 <section id="schedule">
                     <h2 class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2">
                         Workshop Schedule
@@ -185,115 +166,132 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
-                                <!-- Opening -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">1:30pm – 1:35pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-2 py-0.5 rounded">Opening</span></td>
                                     <td class="px-4 py-3 text-slate-700">Workshop Opening Remarks</td>
                                 </tr>
-                                <!-- Keynote -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">1:35pm – 2:00pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded">Keynote</span></td>
                                     <td class="px-4 py-3 text-slate-700">Keynote Talk (25 min)</td>
                                 </tr>
-                                <!-- Invited Talk #1 -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">2:00pm – 2:15pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">Invited Talk</span></td>
                                     <td class="px-4 py-3 text-slate-700">Invited Talk #1 (15 min)</td>
                                 </tr>
-                                <!-- Talk 1 -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">2:15pm – 2:30pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>AgentCgroup: Understanding and Controlling OS Resources of AI Agents</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>AgentCgroup: Understanding and Controlling OS Resources of AI Agents</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Yusheng Zheng, Jiakun Fan, Quanzhi Fu, Yiwei Yang, Wei Zhang and Andi Quinn</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 2 -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">2:30pm – 2:45pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Rethinking OS Interfaces for LLM Agents</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Rethinking OS Interfaces for LLM Agents</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Yuan Wang, Mingyu Li and Haibo Chen</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 3 -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">2:45pm – 3:00pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Skills are the new Apps — Now It's Time for Skill OS</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Skills are the new Apps — Now It's Time for Skill OS</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Le Chen, Zichang Wang, Wenxin Zheng, Erhu Feng, Dong Du, Yubin Xia and Haibo Chen</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 4 -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">3:00pm – 3:15pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Toward LLM-Driven Rule Generation for Enforcement Systems: An Exploratory Study on WAF</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Toward LLM-Driven Rule Generation for Enforcement Systems: An Exploratory Study on WAF</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Quanzhi Fu and Dan Williams</div>
+                                    </td>
                                 </tr>
-                                <!-- Break -->
                                 <tr class="bg-amber-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">3:15pm – 3:45pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-amber-200 text-amber-900 text-xs font-bold px-2 py-0.5 rounded">Break</span></td>
                                     <td class="px-4 py-3 text-slate-700">Poster & Coffee Break (30 min)</td>
                                 </tr>
-                                <!-- Invited Talk #2 -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">3:45pm – 4:00pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">Invited Talk</span></td>
                                     <td class="px-4 py-3 text-slate-700">Invited Talk #2 (15 min)</td>
                                 </tr>
-                                <!-- Talk 5 -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:00pm – 4:15pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Fork, Explore, Commit: OS Primitives for Agentic Exploration</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Fork, Explore, Commit: OS Primitives for Agentic Exploration</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Cong Wang and Yusheng Zheng</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 6 -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:15pm – 4:30pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>It is Time to Virtualize Foundation Models with a Self-evolving Operating System Layer</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>It is Time to Virtualize Foundation Models with a Self-evolving Operating System Layer</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Suparna Bhattacharya, Tarun Kumar, Cong Xu, Satish Kumar Mopur, Jiahao Li, Ashish Mishra, Aalap Tripathy, Annmary Justine Koomthanam, Martin Foltin and Ian Foster</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 7 -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:30pm – 4:45pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">Research Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Fuyun: Bridging the Semantic Gap in Serverless Resource Provisioning via LLM Agents</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Fuyun: Bridging the Semantic Gap in Serverless Resource Provisioning via LLM Agents</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Qingwen Li, Kai Lv, Mingxuan Yang, Zhengyu Lei, Cunchi Lv, Xiao Shi and Xiaofang Zhao</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 8 (short) -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:45pm – 4:50pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded">Vision Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Mobile-MCP: Implementing the Model Context Protocol via Android's Inter-Application Communication Mechanisms</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Mobile-MCP: Implementing the Model Context Protocol via Android's Inter-Application Communication Mechanisms</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Xiheng Li, Mengting He, Chengcheng Wan and Linhai Song</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 9 (short) -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:50pm – 4:55pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded">Vision Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>pMVX: Policy-Level Multi-Version Execution for Agentic OS Kernel Self-Tuning</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>pMVX: Policy-Level Multi-Version Execution for Agentic OS Kernel Self-Tuning</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Sujot Singh, Eddie Federmeyer, Kenan Alghythee and Xiaoguang Wang</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 10 (short) -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">4:55pm – 5:00pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded">Vision Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Execute-Only Agents: Architectural Defense Against Prompt Injection for AI Agents</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Execute-Only Agents: Architectural Defense Against Prompt Injection for AI Agents</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Rahul Tiwari and Dan Williams</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 11 (short) -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">5:00pm – 5:05pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded">Vision Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Towards Agentic Performance Management</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Towards Agentic Performance Management</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Jingyuan Chen, Gongqi Huang and Amit Levy</div>
+                                    </td>
                                 </tr>
-                                <!-- Talk 12 (short) -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">5:05pm – 5:10pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded">Vision Paper</span></td>
-                                    <td class="px-4 py-3 text-slate-700"><strong>Grimlock: Guarding High-Agency Systems with eBPF and Attested Channels</strong></td>
+                                    <td class="px-4 py-3 text-slate-700">
+                                        <strong>Grimlock: Guarding High-Agency Systems with eBPF and Attested Channels</strong>
+                                        <div class="text-xs text-slate-500 mt-1">Gan Fang, Sheng Mao, Mark Wu, Wenhui Zhang, Biao Gao, David Levitsky, Shawna Murphy Butterworth and Rob Cameron</div>
+                                    </td>
                                 </tr>
-                                <!-- Panel Discussion -->
                                 <tr class="bg-slate-50">
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">5:10pm – 6:00pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded">Panel</span></td>
                                     <td class="px-4 py-3 text-slate-700">Panel Discussion (50 min)</td>
                                 </tr>
-                                <!-- Social Dinner -->
                                 <tr>
                                     <td class="px-4 py-3 font-mono text-slate-600 align-top">6:30pm</td>
                                     <td class="px-4 py-3 align-top"><span class="inline-block bg-rose-100 text-rose-800 text-xs font-bold px-2 py-0.5 rounded">Social</span></td>
@@ -304,7 +302,6 @@
                     </div>
                 </section>
 
-                <!-- Topics of Interest -->
                 <section id="topics">
                     <h2 class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2">
                         Topics of Interest
@@ -352,14 +349,12 @@
                     </div>
                 </section>
 
-                <!-- Submission Guidelines -->
                 <section id="submission">
                      <h2 class="text-2xl font-serif font-bold text-slate-900 mb-6">Submission Guidelines</h2>
                      <div class="space-y-6">
                         <p class="text-slate-600">We solicit two types of submissions:</p>
                         
                         <div class="grid grid-cols-1 gap-6">
-                            <!-- Type 1 -->
                             <div class="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="bg-academic-100 text-academic-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Track 1</span>
@@ -373,7 +368,6 @@
                                 </p>
                             </div>
 
-                            <!-- Type 2 -->
                             <div class="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="bg-slate-100 text-slate-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Track 2</span>
@@ -384,8 +378,7 @@
                                 </p>
                                 <p class="text-sm text-slate-500">
                                     Suitable for more complete concepts, research results, experience reports, or comprehensive position papers.
-                                    <!-- Accepted papers may appear in the ACM Digital Library (authors may opt out). -->
-                                </p>
+                                    </p>
                             </div>
                         </div>
 
@@ -396,7 +389,6 @@
                      </div>
                 </section>
 
-                <!-- FAQ -->
                 <section id="faq">
                     <details class="border border-slate-200 rounded-lg group">
                         <summary class="flex items-center justify-between cursor-pointer p-5 hover:bg-slate-50 transition-colors">
@@ -422,10 +414,8 @@
                 </section>
             </main>
 
-            <!-- Right Column: Sidebar (Dates & Info) -->
             <aside class="lg:col-span-4 space-y-8">
                 
-                <!-- Important Dates Box -->
                 <div id="dates" class="bg-slate-900 text-white rounded-lg p-6 shadow-xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
                     <h3 class="font-mono text-lg font-bold mb-6 border-b border-white/20 pb-2">
@@ -456,7 +446,6 @@
                     </div>
                 </div>
 
-                <!-- Program Committee -->
                 <div class="bg-white border border-slate-200 rounded-lg p-6">
                     <h3 class="font-serif font-bold text-slate-900 mb-4">Program Committee</h3>
                     <div class="space-y-4">
@@ -507,7 +496,6 @@
                     </div>
                 </div>
 
-                <!-- Organizers -->
                 <div class="bg-white border border-slate-200 rounded-lg p-6">
                     <h3 class="font-serif font-bold text-slate-900 mb-4">Organizers</h3>
                     <div class="space-y-6">
@@ -543,22 +531,10 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Footer / Logos -->
-                <!-- <div class="text-center">
-                    <p class="text-xs text-slate-400 mb-2">Sponsored by</p>
-                    <div class="flex justify-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        <div class="h-8 bg-slate-200 rounded px-2 flex items-center text-xs font-bold text-slate-500">ASPLOS</div>
-                        <div class="h-8 bg-slate-200 rounded px-2 flex items-center text-xs font-bold text-slate-500">ACM</div>
-                        <div class="h-8 bg-slate-200 rounded px-2 flex items-center text-xs font-bold text-slate-500">SIGARCH</div>
-                    </div>
-                </div> -->
-
             </aside>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
         <div class="max-w-6xl mx-auto px-4 flex justify-center items-center gap-4">
             <p class="font-mono text-sm text-slate-500">
@@ -572,12 +548,10 @@
         </div>
     </footer>
 
-    <!-- Init Lucide Icons -->
     <script>
         lucide.createIcons();
     </script>
     
-    <!-- Mobile Menu Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const btn = document.getElementById('mobile-menu-btn');
