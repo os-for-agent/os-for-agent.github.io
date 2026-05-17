@@ -1,138 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic OS @ ASPLOS 2026 - Poster (Minimal)</title>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.min.js"></script>
-  <style>
-    @media print {
-      .print\\:hidden { display: none !important; }
-      .print\\:bg-white { background-color: white !important; }
-      .print\\:p-0 { padding: 0 !important; }
-      .print\\:shadow-none { box-shadow: none !important; }
-      .print\\:border-0 { border-width: 0 !important; }
-      .print\\:w-full { width: 100% !important; }
-      .print\\:max-w-none { max-width: none !important; }
-      .print\\:aspect-auto { aspect-ratio: auto !important; }
-      .print\\:h-full { height: 100% !important; }
-      .print\\:text-black { color: black !important; }
-      .print\\:bg-black { background-color: black !important; }
-      .print\\:bg-transparent { background-color: transparent !important; }
-      .print\\:border-black { border-color: black !important; }
-      .print\\:border-slate-300 { border-color: rgb(203 213 225) !important; }
-    }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
-  <script type="text/babel">
-    const { Bot, Printer, Layers, Cpu, Share2, Shield } = lucideReact;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic OS @ ASPLOS 2026 - Poster (Minimal)</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide-react@1.16.0/dist/umd/lucide-react.min.js"></script>
+    <style>
+      @media print {
+        .print\\:hidden {
+          display: none !important;
+        }
+        .print\\:bg-white {
+          background-color: white !important;
+        }
+        .print\\:p-0 {
+          padding: 0 !important;
+        }
+        .print\\:shadow-none {
+          box-shadow: none !important;
+        }
+        .print\\:border-0 {
+          border-width: 0 !important;
+        }
+        .print\\:w-full {
+          width: 100% !important;
+        }
+        .print\\:max-w-none {
+          max-width: none !important;
+        }
+        .print\\:aspect-auto {
+          aspect-ratio: auto !important;
+        }
+        .print\\:h-full {
+          height: 100% !important;
+        }
+        .print\\:text-black {
+          color: black !important;
+        }
+        .print\\:bg-black {
+          background-color: black !important;
+        }
+        .print\\:bg-transparent {
+          background-color: transparent !important;
+        }
+        .print\\:border-black {
+          border-color: black !important;
+        }
+        .print\\:border-slate-300 {
+          border-color: rgb(203 213 225) !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { Bot, Printer, Layers, Cpu, Share2, Shield } = lucideReact;
 
-    const App = () => {
-      // --- Feature: Download/Print PDF ---
-      const handleDownload = () => {
-        window.print();
-      };
+      const App = () => {
+        // --- Feature: Download/Print PDF ---
+        const handleDownload = () => {
+          window.print();
+        };
 
-      return (
-        <div className="w-full min-h-screen bg-neutral-100 flex justify-center items-center py-4 px-4 font-sans text-slate-900 overflow-hidden print:bg-white print:p-0">
+        return (
+          <div className="w-full min-h-screen bg-neutral-100 flex justify-center items-center py-4 px-4 font-sans text-slate-900 overflow-hidden print:bg-white print:p-0">
+            {/* Print Button (Tool only) */}
+            <button
+              onClick={handleDownload}
+              className="fixed bottom-6 right-6 z-40 bg-black text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all print:hidden"
+              title="Print / Save as PDF"
+            >
+              <Printer size={20} />
+            </button>
 
-          {/* Print Button (Tool only) */}
-          <button
-            onClick={handleDownload}
-            className="fixed bottom-6 right-6 z-40 bg-black text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all print:hidden"
-            title="Print / Save as PDF"
-          >
-            <Printer size={20} />
-          </button>
+            {/* Poster Container - 2:3 Aspect Ratio (Vertical/Mobile) */}
+            <div className="relative w-full max-w-[380px] aspect-[2/3] bg-white text-black shadow-2xl overflow-hidden border-[6px] border-white print:shadow-none print:border-0 print:w-full print:max-w-none print:aspect-auto print:h-full flex flex-col">
+              {/* Abstract Background Shapes (Static) */}
+              <div className="absolute top-[-12%] left-[-20%] w-[140%] h-[50%] bg-blue-600 rounded-b-[100%] z-0 print:bg-black"></div>
+              <div className="absolute top-[25%] left-[5%] w-20 h-20 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-80 z-0"></div>
+              <div className="absolute top-[20%] right-[5%] w-28 h-28 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-80 z-0"></div>
 
-          {/* Poster Container - 2:3 Aspect Ratio (Vertical/Mobile) */}
-          <div className="relative w-full max-w-[380px] aspect-[2/3] bg-white text-black shadow-2xl overflow-hidden border-[6px] border-white print:shadow-none print:border-0 print:w-full print:max-w-none print:aspect-auto print:h-full flex flex-col">
-
-            {/* Abstract Background Shapes (Static) */}
-            <div className="absolute top-[-12%] left-[-20%] w-[140%] h-[50%] bg-blue-600 rounded-b-[100%] z-0 print:bg-black"></div>
-            <div className="absolute top-[25%] left-[5%] w-20 h-20 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-80 z-0"></div>
-            <div className="absolute top-[20%] right-[5%] w-28 h-28 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-80 z-0"></div>
-
-            {/* Content Wrapper - Flex column to fill space strictly */}
-            <div className="relative z-10 flex flex-col h-full w-full">
-
-              {/* Header Area */}
-              <div className="pt-[12%] px-6 text-center text-white shrink-0 flex flex-col items-center">
-                <div className="inline-flex items-center justify-center mb-3">
-                  <Bot className="w-10 h-10 text-white fill-white/20" />
-                </div>
-                <h1 className="text-4xl font-black tracking-tighter leading-none mb-2">
-                  AGENTIC<br/>OS
-                </h1>
-                <div className="inline-block bg-white text-blue-600 px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest print:text-black border border-transparent print:border-black">
-                  Workshop@ASPLOS 2026
-                </div>
-              </div>
-
-              {/* Central Area */}
-              <div className="flex-grow flex flex-col justify-center items-center px-6 w-full">
-
-                {/* Hook Text */}
-                <div className="mb-6 text-center">
-                  <p className="text-lg font-bold leading-tight text-slate-800">
-                    如果未来的"进程"<br/>
-                    变成了<span className="text-blue-600 print:text-black bg-blue-50/50 print:bg-transparent px-1 rounded mx-0.5">智能体</span>，<br/>
-                    操作系统该如何进化？
-                  </p>
-                </div>
-
-                {/* 4 Key Points Grid - 2x2 Layout, Smaller Font, Tighter Spacing */}
-                <div className="grid grid-cols-2 gap-x-2 gap-y-2 w-full max-w-[320px] px-2">
-                  <div className="flex items-center gap-1.5">
-                     <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0"><Layers size={12} /></div>
-                     <span className="text-[10px] font-bold text-slate-800 leading-tight">Agent-native OS 架构</span>
+              {/* Content Wrapper - Flex column to fill space strictly */}
+              <div className="relative z-10 flex flex-col h-full w-full">
+                {/* Header Area */}
+                <div className="pt-[12%] px-6 text-center text-white shrink-0 flex flex-col items-center">
+                  <div className="inline-flex items-center justify-center mb-3">
+                    <Bot className="w-10 h-10 text-white fill-white/20" />
                   </div>
-                  <div className="flex items-center gap-1.5">
-                     <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0"><Cpu size={12} /></div>
-                     <span className="text-[10px] font-bold text-slate-800 leading-tight">GPU/TPU/Memory 资源调度</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                     <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0"><Share2 size={12} /></div>
-                     <span className="text-[10px] font-bold text-slate-800 leading-tight">多 Agent 协作与工具生态</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                     <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0"><Shield size={12} /></div>
-                     <span className="text-[10px] font-bold text-slate-800 leading-tight">Sandboxing, 安全与隔离</span>
+                  <h1 className="text-4xl font-black tracking-tighter leading-none mb-2">
+                    AGENTIC
+                    <br />
+                    OS
+                  </h1>
+                  <div className="inline-block bg-white text-blue-600 px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest print:text-black border border-transparent print:border-black">
+                    Workshop@ASPLOS 2026
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom Info Bar */}
-              <div className="bg-slate-50 border-t-2 border-slate-100 p-5 print:bg-white print:border-black shrink-0 w-full">
+                {/* Central Area */}
+                <div className="flex-grow flex flex-col justify-center items-center px-6 w-full">
+                  {/* Hook Text */}
+                  <div className="mb-6 text-center">
+                    <p className="text-lg font-bold leading-tight text-slate-800">
+                      如果未来的"进程"
+                      <br />
+                      变成了
+                      <span className="text-blue-600 print:text-black bg-blue-50/50 print:bg-transparent px-1 rounded mx-0.5">
+                        智能体
+                      </span>
+                      ，<br />
+                      操作系统该如何进化？
+                    </p>
+                  </div>
 
-                 {/* Dates & Submission Types */}
-                 <div className="flex justify-between items-start mb-3 border-b border-slate-200 pb-3 print:border-slate-300">
+                  {/* 4 Key Points Grid - 2x2 Layout, Smaller Font, Tighter Spacing */}
+                  <div className="grid grid-cols-2 gap-x-2 gap-y-2 w-full max-w-[320px] px-2">
+                    <div className="flex items-center gap-1.5">
+                      <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0">
+                        <Layers size={12} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-800 leading-tight">
+                        Agent-native OS 架构
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0">
+                        <Cpu size={12} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-800 leading-tight">
+                        GPU/TPU/Memory 资源调度
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0">
+                        <Share2 size={12} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-800 leading-tight">
+                        多 Agent 协作与工具生态
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="bg-slate-100 p-1 rounded-full text-blue-600 print:text-black shrink-0">
+                        <Shield size={12} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-800 leading-tight">
+                        Sandboxing, 安全与隔离
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Info Bar */}
+                <div className="bg-slate-50 border-t-2 border-slate-100 p-5 print:bg-white print:border-black shrink-0 w-full">
+                  {/* Dates & Submission Types */}
+                  <div className="flex justify-between items-start mb-3 border-b border-slate-200 pb-3 print:border-slate-300">
                     <div>
-                       <h3 className="text-[9px] font-bold uppercase text-slate-400 mb-0.5">Timeline</h3>
-                       <div className="text-xs font-black text-slate-900">FEB 2026 <span className="text-slate-400 font-normal text-[9px] ml-0.5">Deadline</span></div>
-                       <div className="text-xs font-black text-slate-900 mt-0.5">MAR 2026 <span className="text-slate-400 font-normal text-[9px] ml-0.5">Workshop</span></div>
+                      <h3 className="text-[9px] font-bold uppercase text-slate-400 mb-0.5">
+                        Timeline
+                      </h3>
+                      <div className="text-xs font-black text-slate-900">
+                        FEB 2026{" "}
+                        <span className="text-slate-400 font-normal text-[9px] ml-0.5">
+                          Deadline
+                        </span>
+                      </div>
+                      <div className="text-xs font-black text-slate-900 mt-0.5">
+                        MAR 2026{" "}
+                        <span className="text-slate-400 font-normal text-[9px] ml-0.5">
+                          Workshop
+                        </span>
+                      </div>
                     </div>
                     <div className="text-right">
-                       <h3 className="text-[9px] font-bold uppercase text-slate-400 mb-0.5">CFP Format</h3>
-                       <div className="text-xs font-bold text-slate-900">Talks <span className="text-[9px] font-medium text-slate-500">(1-2p)</span></div>
-                       <div className="text-xs font-bold text-slate-900 mt-0.5">Short Papers <span className="text-[9px] font-medium text-slate-500">(6p)</span></div>
+                      <h3 className="text-[9px] font-bold uppercase text-slate-400 mb-0.5">
+                        CFP Format
+                      </h3>
+                      <div className="text-xs font-bold text-slate-900">
+                        Talks{" "}
+                        <span className="text-[9px] font-medium text-slate-500">
+                          (1-2p)
+                        </span>
+                      </div>
+                      <div className="text-xs font-bold text-slate-900 mt-0.5">
+                        Short Papers{" "}
+                        <span className="text-[9px] font-medium text-slate-500">
+                          (6p)
+                        </span>
+                      </div>
                     </div>
-                 </div>
+                  </div>
 
-                 {/* Footer Link & QR */}
-                 <div className="flex items-end justify-between w-full">
+                  {/* Footer Link & QR */}
+                  <div className="flex items-end justify-between w-full">
                     <div className="flex flex-col justify-center items-start">
-                       <div className="text-base font-black tracking-tight text-blue-600 print:text-black">os-for-agent.github.io</div>
-                       <div className="text-[8px] font-bold text-slate-600 mt-1 leading-snug">
-                         欢迎投稿：早期想法、原型、踩坑经验<br/>
-                         甚至负面结果，<span className="text-blue-600 print:text-black">统统欢迎！</span>
-                       </div>
+                      <div className="text-base font-black tracking-tight text-blue-600 print:text-black">
+                        os-for-agent.github.io
+                      </div>
+                      <div className="text-[8px] font-bold text-slate-600 mt-1 leading-snug">
+                        欢迎投稿：早期想法、原型、踩坑经验
+                        <br />
+                        甚至负面结果，
+                        <span className="text-blue-600 print:text-black">
+                          统统欢迎！
+                        </span>
+                      </div>
                     </div>
                     {/* QR Code */}
                     <div className="bg-white p-1 rounded border border-slate-100 print:border-slate-300 shrink-0 ml-4">
@@ -142,17 +224,16 @@
                         className="w-12 h-12 block mix-blend-multiply"
                       />
                     </div>
-                 </div>
+                  </div>
+                </div>
               </div>
-
             </div>
           </div>
-        </div>
-      );
-    };
+        );
+      };
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
-</body>
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
 </html>

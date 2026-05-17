@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgenticOS 2026 | Operating Systems Design for AI Agents</title>
+
+    <meta
+      name="description"
+      content="The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026. Explore primitives, isolation models, and scheduling for agent workloads."
+    />
+    <meta
+      property="og:title"
+      content="AgenticOS 2026 | Workshop on OS Design for AI Agents"
+    />
+    <meta
+      property="og:description"
+      content="Call for Papers: The 1st Workshop on Operating Systems Design for AI Agents, co-located with ASPLOS 2026 in Pittsburgh."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Merriweather:ital,wght@0,300;0,700;0,900;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/lucide@1.16.0"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Merriweather", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              academic: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                600: "#0284c7", // Sky Blue for links
+                800: "#075985",
+                900: "#0c4a6e", // Deep Navy
+              },
+              agent: {
+                accent: "#10b981", // Emerald green for "Active/Running" state
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar for code blocks or sidebars */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white text-slate-800 font-sans antialiased selection:bg-academic-100 selection:text-academic-900"
+  >
+    <nav
+      class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50 transition-all duration-300"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0 flex items-center gap-2">
+            <img src="icon.png" alt="Logo" class="w-8 h-8 rounded-full" />
+            <span
+              class="font-mono font-bold text-xl tracking-tight text-slate-900"
+              >AgenticOS Workshop '26</span
+            >
+          </div>
+
+          <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <a
+              href="#about"
+              class="text-slate-600 hover:text-academic-800 transition-colors"
+              >Call for Papers</a
+            >
+            <a
+              href="#schedule"
+              class="text-slate-600 hover:text-academic-800 transition-colors"
+              >Schedule</a
+            >
+            <a
+              href="#topics"
+              class="text-slate-600 hover:text-academic-800 transition-colors"
+              >Topics</a
+            >
+            <a
+              href="#dates"
+              class="text-slate-600 hover:text-academic-800 transition-colors"
+              >Dates</a
+            >
+            <a
+              href="#submission"
+              class="px-4 py-2 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors"
+              >Submit</a
+            >
+          </div>
+
+          <div class="flex items-center md:hidden">
+            <button
+              id="mobile-menu-btn"
+              type="button"
+              class="text-slate-500 hover:text-slate-800 focus:outline-none p-2"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="hidden md:hidden border-t border-slate-100 bg-white"
+        id="mobile-menu"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+          <a
+            href="#about"
+            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50"
+            >Call for Papers</a
+          >
+          <a
+            href="#schedule"
+            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50"
+            >Schedule</a
+          >
+          <a
+            href="#topics"
+            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50"
+            >Topics</a
+          >
+          <a
+            href="#dates"
+            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-academic-800 hover:bg-slate-50"
+            >Dates</a
+          >
+          <a
+            href="#submission"
+            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-academic-800 font-bold hover:bg-slate-50"
+            >Submit Paper</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+        ></div>
+        <div
+          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-academic-600 opacity-20 blur-[100px]"
+        ></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono font-medium mb-6"
+        >
+          <span class="font-bold text-academic-800">WORKSHOP</span>
+          <span class="text-slate-300">|</span>
+          <span>CO-LOCATED WITH ASPLOS 2026</span>
+        </div>
+        <h1
+          class="text-4xl md:text-6xl font-serif font-bold text-slate-900 tracking-tight mb-4"
+        >
+          Agentic OS
+        </h1>
+        <p
+          class="text-xl md:text-2xl text-slate-600 font-light mb-8 max-w-3xl mx-auto"
+        >
+          The 1st Workshop on <br class="hidden md:block" />
+          Operating Systems Design for AI Agents
+        </p>
+
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 text-slate-700 font-mono text-sm border-t border-b border-slate-100 py-6 bg-white/50 backdrop-blur-sm"
+        >
+          <div class="flex items-center gap-2">
+            <i data-lucide="calendar" class="w-5 h-5 text-academic-600"></i>
+            <span>March 23, 2026</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-academic-600"></i>
+            <span>Pittsburgh, USA</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <main class="lg:col-span-8 space-y-16">
+          <section
+            id="about"
+            class="prose prose-slate max-w-none prose-headings:font-serif prose-headings:font-bold prose-a:text-academic-600"
+          >
+            <h2
+              class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2"
+            >
+              Overview
+            </h2>
+            <p>
+              AI agents are rapidly evolving from experimental prototypes to
+              always-on services that autonomously plan, invoke external tools,
+              collaborate, and continuously interact with their environment.
+              This shift challenges traditional operating system
+              abstractions—processes, threads, files, sockets, and resource
+              controllers—which were never designed for dynamic, semantically
+              rich, adaptive agent workloads. To support AI agents at scale,
+              operating systems themselves must become <em>agentic</em>,
+              adapting their abstractions and resource management policies to
+              the semantic behaviors of agents.
+            </p>
+            <p>
+              The AgenticOS workshop seeks original position papers and
+              experience reports that explore OS-level mechanisms for AI-agent
+              workloads. Our goal is to define the primitives, isolation models,
+              scheduling techniques, and observability mechanisms necessary to
+              build operating systems explicitly tailored to agent-based
+              systems.
+            </p>
+          </section>
+
+          <section id="schedule">
+            <h2
+              class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2"
+            >
+              Workshop Schedule
+            </h2>
+            <p class="mb-6 text-slate-600">
+              March 23, 2026 — Afternoon Session
+            </p>
+            <div class="border border-slate-200 rounded-lg overflow-hidden">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-slate-900 text-white text-left">
+                    <th class="px-4 py-3 font-mono font-medium w-40">Time</th>
+                    <th class="px-4 py-3 font-medium w-32">Session</th>
+                    <th class="px-4 py-3 font-medium">Details</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      1:30pm – 1:35pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-2 py-0.5 rounded"
+                        >Opening</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Workshop Opening Remarks by
+                      <a
+                        href="https://faculty.ucmerced.edu/dong-li/"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >Prof. Dong Li</a
+                      >
+                      (<a
+                        href="slides/opening-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      1:35pm – 2:00pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Keynote</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Keynote Talk by
+                      <a
+                        href="https://website.cs.vt.edu/people/faculty/dan-williams.html"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >Prof. Dan Williams</a
+                      >
+                      (25 min) (<a
+                        href="slides/keynote-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:00pm – 2:15pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_10.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >AgentCgroup: Understanding and Controlling OS
+                          Resources of AI Agents</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/agentcgroup-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Yusheng Zheng, Jiakun Fan, Quanzhi Fu, Yiwei Yang, Wei
+                        Zhang and Andi Quinn
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:15pm – 2:30pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_9.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Rethinking OS Interfaces for LLM Agents</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/rethinking-os-interfaces-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Yuan Wang, Mingyu Li and Haibo Chen
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:30pm – 2:45pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_13.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Skills are the new Apps — Now It's Time for Skill
+                          OS</a
+                        ></strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Le Chen, Zichang Wang, Wenxin Zheng, Erhu Feng, Dong Du,
+                        Yubin Xia and Haibo Chen
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:45pm – 3:00pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_24.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Toward LLM-Driven Rule Generation for Enforcement
+                          Systems: An Exploratory Study on WAF</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/waf-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Quanzhi Fu and Dan Williams
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:00pm – 3:10pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Vision Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_18.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Mobile-MCP: Implementing the Model Context Protocol
+                          via Android's Inter-Application Communication
+                          Mechanisms</a
+                        ></strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Xiheng Li, Mengting He, Chengcheng Wan and Linhai Song
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:10pm – 3:20pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Vision Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_17.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >pMVX: Policy-Level Multi-Version Execution for
+                          Agentic OS Kernel Self-Tuning</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/pmvx-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Sujot Singh, Eddie Federmeyer, Kenan Alghythee and
+                        Xiaoguang Wang
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:20pm – 3:30pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Vision Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_21.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Execute-Only Agents: Architectural Defense Against
+                          Prompt Injection for AI Agents</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/execute-only-agents-slides.pptx"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Rahul Tiwari and Dan Williams
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-amber-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:30pm – 4:00pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-amber-200 text-amber-900 text-xs font-bold px-2 py-0.5 rounded"
+                        >Break</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Coffee Break (30 min)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:00pm – 4:15pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Invited Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >Agents Are Not Just a Model Problem. They Are an
+                        Execution Problem.</strong
+                      >
+                      (<a
+                        href="slides/execution-problem-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">Guanlan Dai</div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:15pm – 4:30pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_8.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Fork, Explore, Commit: OS Primitives for Agentic
+                          Exploration</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/branchcontext-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Cong Wang and Yusheng Zheng
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:30pm – 4:45pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_26.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >It is Time to Virtualize Foundation Models with a
+                          Self-evolving Operating System Layer</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/vfmos-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Suparna Bhattacharya, Tarun Kumar, Cong Xu, Satish Kumar
+                        Mopur, Jiahao Li, Ashish Mishra, Aalap Tripathy, Annmary
+                        Justine Koomthanam, Martin Foltin and Ian Foster
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:45pm – 5:00pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_16.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Fuyun: Bridging the Semantic Gap in Serverless
+                          Resource Provisioning via LLM Agents</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/fuyun-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Qingwen Li, Kai Lv, Mingxuan Yang, Zhengyu Lei, Cunchi
+                        Lv, Xiao Shi and Xiaofang Zhao
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:00pm – 5:10pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Vision Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_11.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Towards Agentic Performance Management</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/agentic-performance-mgmt-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Jingyuan Chen, Gongqi Huang and Amit Levy
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:10pm – 5:20pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Vision Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="papers/AgenticOS_2026_paper_23.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Grimlock: Guarding High-Agency Systems with eBPF and
+                          Attested Channels</a
+                        ></strong
+                      >
+                      (<a
+                        href="slides/grimlock-slides.pdf"
+                        class="text-academic-600 hover:text-academic-800 underline"
+                        target="_blank"
+                        >slides</a
+                      >)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Qiancheng Wu, Wenhui Zhang, Gan Fang, Sheng Mao, Biao
+                        Gao, David Levitsky, Shawna Murphy Butterworth and Rob
+                        Cameron
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:20pm – 5:25pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Awards</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        ><a
+                          href="slides/closing-slides.pdf"
+                          class="text-academic-600 hover:text-academic-800 underline"
+                          target="_blank"
+                          >Best Paper Awards + Closing</a
+                        ></strong
+                      >
+                      (5 min)
+                      <div class="text-xs text-slate-500 mt-1">
+                        Prof. Dong Li
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:25pm – 6:00pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-rose-100 text-rose-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Social</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong>Networking</strong> (35 min)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      6:30pm EDT
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-rose-100 text-rose-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Social</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">Social Dinner</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="topics">
+            <h2
+              class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2"
+            >
+              Topics of Interest
+            </h2>
+            <p class="mb-6 text-slate-600">
+              Topics of interest include (but are not limited to):
+            </p>
+            <div
+              class="bg-slate-50 border border-slate-200 rounded-lg p-6 md:p-8"
+            >
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="cpu"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >New OS abstractions for agent execution
+                    (process/container/multikernel enhancements)</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="shield"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Dynamic sandboxing and lightweight runtimes for securely
+                    executing agent-generated code and tasks</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="activity"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Semantics-aware resource management and scheduling for
+                    dynamic, multi-agent workloads</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="database"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Long-lived state abstractions for managing agent context,
+                    prompts, and episodic memory</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="eye"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >eBPF-driven extensions for real-time observability,
+                    adaptation, and constraint enforcement</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="zap"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Compiler–OS co-design for adaptive and agent-aware JIT
+                    execution strategies</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="server"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >GPU and accelerator virtualization for large-scale
+                    deployment of agent workloads</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="lock"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Security and isolation mechanisms for agent-invoked tools,
+                    code, and data flows</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    data-lucide="settings"
+                    class="w-5 h-5 text-academic-600 mt-1 flex-shrink-0"
+                  ></i>
+                  <span class="text-slate-700"
+                    >Agents managing systems: kernel tuning, anomaly detection,
+                    resource orchestration, failure recovery, and dynamic policy
+                    updates</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="submission">
+            <h2 class="text-2xl font-serif font-bold text-slate-900 mb-6">
+              Submission Guidelines
+            </h2>
+            <div class="space-y-6">
+              <p class="text-slate-600">We solicit two types of submissions:</p>
+
+              <div class="grid grid-cols-1 gap-6">
+                <div
+                  class="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                >
+                  <div class="flex items-center gap-2 mb-3">
+                    <span
+                      class="bg-academic-100 text-academic-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide"
+                      >Track 1</span
+                    >
+                    <h3 class="font-bold text-slate-900">Vision Papers</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 mb-4">
+                    <strong>1–2 pages</strong> (excluding references).
+                  </p>
+                  <p class="text-sm text-slate-500">
+                    Suitable for early-stage ideas, position statements, ongoing
+                    projects, demos, and
+                    <strong>insights from production systems</strong>. We
+                    strongly welcome contributions from
+                    <strong
+                      >industry practitioners and the open source
+                      community</strong
+                    >
+                    to share real-world experiences and challenges.
+                  </p>
+                </div>
+
+                <div
+                  class="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                >
+                  <div class="flex items-center gap-2 mb-3">
+                    <span
+                      class="bg-slate-100 text-slate-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide"
+                      >Track 2</span
+                    >
+                    <h3 class="font-bold text-slate-900">Research Papers</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 mb-4">
+                    <strong>Up to 6 pages</strong> (excluding references).
+                  </p>
+                  <p class="text-sm text-slate-500">
+                    Suitable for more complete concepts, research results and
+                    experience reports.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="bg-slate-50 p-6 rounded-lg border border-slate-200 text-sm text-slate-600 space-y-2"
+              >
+                <p>
+                  All submissions must follow the
+                  <a
+                    href="https://www.acm.org/publications/proceedings-template"
+                    class="text-academic-600 underline hover:text-academic-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ACM double-column conference format</a
+                  >. The review process is single-blind, with each submission
+                  receiving at least two reviews.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="faq">
+            <details class="border border-slate-200 rounded-lg group">
+              <summary
+                class="flex items-center justify-between cursor-pointer p-5 hover:bg-slate-50 transition-colors"
+              >
+                <h2 class="text-2xl font-serif font-bold text-slate-900">
+                  Frequently Asked Questions
+                </h2>
+                <i
+                  data-lucide="plus"
+                  class="w-5 h-5 text-slate-400 group-open:hidden"
+                ></i>
+                <i
+                  data-lucide="minus"
+                  class="w-5 h-5 text-slate-400 hidden group-open:block"
+                ></i>
+              </summary>
+              <div class="px-5 pb-5 space-y-4">
+                <div class="border-t border-slate-100 pt-4">
+                  <h3 class="font-bold text-slate-900 mb-2">
+                    Can I submit work that is already on arXiv?
+                  </h3>
+                  <p class="text-sm text-slate-600">
+                    Yes. Posting on arXiv or other preprint servers does not
+                    disqualify a submission.
+                  </p>
+                </div>
+                <div class="border-t border-slate-100 pt-4">
+                  <h3 class="font-bold text-slate-900 mb-2">
+                    Can I submit work-in-progress or concurrent submissions?
+                  </h3>
+                  <p class="text-sm text-slate-600">
+                    Yes. We welcome early-stage ideas and ongoing work.
+                    Submissions under review at other venues are acceptable.
+                  </p>
+                </div>
+                <div class="border-t border-slate-100 pt-4">
+                  <h3 class="font-bold text-slate-900 mb-2">
+                    Will this affect future publication at other venues?
+                  </h3>
+                  <p class="text-sm text-slate-600">
+                    No. This workshop has no formal proceedings. Accepted papers
+                    will only appear on the workshop website, which does not
+                    preclude future publication at conferences or journals.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </section>
+        </main>
+
+        <aside class="lg:col-span-4 space-y-8">
+          <div
+            id="dates"
+            class="bg-slate-900 text-white rounded-lg p-6 shadow-xl relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl"
+            ></div>
+            <h3
+              class="font-mono text-lg font-bold mb-6 border-b border-white/20 pb-2"
+            >
+              Important Dates
+            </h3>
+            <ul class="space-y-4">
+              <li class="relative pl-4 border-l-2 border-agent-accent">
+                <div class="text-xs text-slate-400 font-mono">
+                  February 8, 2026
+                </div>
+                <div class="font-medium">Paper Submission Deadline</div>
+              </li>
+              <li class="relative pl-4 border-l-2 border-slate-700">
+                <div class="text-xs text-slate-400 font-mono">
+                  February 25, 2026
+                </div>
+                <div class="font-medium">Notification of Acceptance</div>
+              </li>
+              <li class="relative pl-4 border-l-2 border-slate-700">
+                <div class="text-xs text-slate-400 font-mono">
+                  March 22, 2026
+                </div>
+                <div class="font-medium">Camera-Ready Deadline</div>
+              </li>
+              <li class="relative pl-4 border-l-2 border-slate-700">
+                <div class="text-xs text-slate-400 font-mono">
+                  March 23, 2026
+                </div>
+                <div class="font-medium">Workshop Date</div>
+              </li>
+            </ul>
+            <div class="mt-8 pt-4 border-t border-white/10">
+              <a
+                href="https://easychair.org/cfp/AgenticOS2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block w-full py-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded text-sm text-center transition-colors"
+              >
+                Submit via EasyChair
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white border border-slate-200 rounded-lg p-6">
+            <h3 class="font-serif font-bold text-slate-900 mb-4">
+              Program Committee
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Dong Li
+                  <span class="text-slate-400 text-xs font-normal"
+                    >(Chair)</span
+                  >
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Associate Professor, University of California, Merced
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Dan Williams
+                  <span class="text-slate-400 text-xs font-normal"></span>
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Assistant Professor, Virginia Tech
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Yiying Zhang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Associate Professor, University of California, San Diego
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Wei Zhang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Assistant Professor, University of Connecticut
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Michael Swift</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Professor, University of Wisconsin, Madison
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Dmitrii Ustiugov</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Assistant Professor, Nanyang Technological University (NTU)
+                  Singapore
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Mingxing Zhang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Assistant Professor, Tsinghua University
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Mengwei Xu</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Associate Professor, Beijing University of Posts and
+                  Telecommunications
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Mingyu (Maxul) Li
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Researcher, Institute of Software, Chinese Academy of Sciences
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Gan Fang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Principal Engineer, Roblox
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">
+                  Qiancheng (Mark) Wu
+                </p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Senior Software Engineer, Roblox
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-slate-200 rounded-lg p-6">
+            <h3 class="font-serif font-bold text-slate-900 mb-4">Organizers</h3>
+            <div class="space-y-6">
+              <div>
+                <p class="text-sm font-bold text-slate-900">Cong Wang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Founder and CEO, Multikernel Technologies
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Dong Du</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Assistant Professor, Shanghai Jiao Tong University
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Huaizheng Zhang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Staff Research Scientist, Bytedance Inc
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Wenhui Zhang</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Senior Software Engineer, Roblox
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Yusheng Zheng</p>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  PhD Student, UC Santa Cruz
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100">
+                <h4
+                  class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2"
+                >
+                  Primary Contact
+                </h4>
+                <a
+                  href="mailto:cwang@multikernel.io"
+                  class="text-sm font-mono text-academic-600 hover:underline"
+                  >cwang@multikernel.io</a
+                >
+              </div>
+              <div class="pt-4 border-t border-slate-100">
+                <a
+                  href="https://www.linkedin.com/company/agentic-os-workshop/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-academic-600 hover:text-academic-800 transition-colors"
+                >
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@agenticoss"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-academic-600 hover:text-academic-800 transition-colors ml-3"
+                >
+                  <i data-lucide="youtube" class="w-5 h-5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-lg p-6">
+            <h3 class="font-serif font-bold text-slate-900 mb-4">Sponsors</h3>
+            <div class="flex items-center justify-center">
+              <a
+                href="https://multikernel.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="multikernel-logo.png"
+                  alt="Multikernel Technologies"
+                  class="max-h-28"
+                />
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
+      <div
+        class="max-w-6xl mx-auto px-4 flex justify-center items-center gap-4"
+      >
+        <p class="font-mono text-sm text-slate-500">
+          AgenticOS 2026 @ ASPLOS '26
+        </p>
+        <span class="text-slate-300">|</span>
+        <a
+          href="https://www.linkedin.com/company/agentic-os-workshop/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-slate-400 hover:text-academic-600 transition-colors"
+        >
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <span class="text-sm">Follow us on LinkedIn</span>
+        </a>
+        <span class="text-slate-300">|</span>
+        <a
+          href="https://www.youtube.com/@agenticoss"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-slate-400 hover:text-academic-600 transition-colors"
+        >
+          <i data-lucide="youtube" class="w-4 h-4"></i>
+          <span class="text-sm">Subscribe on YouTube</span>
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const links = document.querySelectorAll(".mobile-link");
+
+        if (btn && menu) {
+          // Toggle menu on button click
+          btn.addEventListener("click", function () {
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", !expanded);
+            menu.classList.toggle("hidden");
+          });
+
+          // Close menu when a link is clicked
+          links.forEach((link) => {
+            link.addEventListener("click", () => {
+              menu.classList.add("hidden");
+              btn.setAttribute("aria-expanded", "false");
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "os-for-agent.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "npm run lint:html && npm run format:check && npm run check:links",
+    "lint:html": "htmlhint \"*.html\"",
+    "format:check": "prettier --check \"*.html\" \".github/**/*.yml\" \"scripts/**/*.mjs\" \"package.json\"",
+    "format": "prettier --write \"*.html\" \".github/**/*.yml\" \"scripts/**/*.mjs\" \"package.json\"",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "devDependencies": {
+    "htmlhint": "1.9.2",
+    "prettier": "3.8.3"
+  }
+}
