@@ -11,7 +11,7 @@ I'll wire it into `index.html` (the "Submission Link TBA" button + the
 - Go to <https://hotcrp.com> → "Create a conference site".
 - Suggested short name: `agenticos2026` → URL `https://agenticos2026.hotcrp.com`.
 - Conference full name: **2nd Workshop on Operating Systems Design for AI Agents (AgenticOS 2026)**.
-- Set yourself (cwang@multikernel.io) as chair/admin.
+- Set Yubin Xia (xiayubin@sjtu.edu.cn) as chair/admin.
 
 ## 1. Settings → Basics
 
@@ -19,7 +19,7 @@ I'll wire it into `index.html` (the "Submission Link TBA" button + the
 |-------|-------|
 | Conference name (long) | 2nd Workshop on Operating Systems Design for AI Agents |
 | Conference name (short) | AgenticOS 2026 |
-| Site contact | Cong Wang — cwang@multikernel.io |
+| Site contact | Yubin Xia — xiayubin@sjtu.edu.cn |
 | Time zone | Set to the chairs' working zone (e.g. America/Los_Angeles or Asia/Shanghai) — affects all deadline cutoffs |
 
 ## 2. Settings → Submissions (deadlines)
