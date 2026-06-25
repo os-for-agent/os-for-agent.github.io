@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgenticOS 2026 Poster - Letter Size</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        /* US Letter Page Setup */
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Poster Container - Letter Size (8.5in x 11in) */
+        .poster-container {
+            width: 8.5in;
+            height: 11in;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 25px 30px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .urgent-deadline {
+            background: #ef4444;
+            color: white;
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .header h1 {
+            font-size: 46px;
+            font-weight: 800;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .header h2 {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 0 0 15px 0;
+            color: #bae6fd;
+        }
+        .header .meta-info {
+            background: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Content Layout */
+        .content {
+            padding: 25px 30px;
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* Section Typography */
+        h3 {
+            font-size: 20px;
+            color: #0f172a;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 4px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        p {
+            font-size: 12px;
+            line-height: 1.55;
+            color: #334155;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+        .intro-lead {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        ul {
+            padding-left: 18px;
+            margin: 0;
+            font-size: 12px;
+            color: #334155;
+            line-height: 1.45;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Dates Table Styling */
+        .dates-box {
+            background: #f8fafc;
+            border-left: 4px solid #ef4444;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        .date-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 4px;
+        }
+        .date-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .date-label { font-weight: 600; color: #0f172a; }
+        .date-value { color: #ef4444; font-weight: 600;}
+
+        /* Tracks Styling */
+        .track-box {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border-left: 3px solid #3b82f6;
+        }
+        .track-box h4 {
+            margin: 0 0 4px 0;
+            color: #1e3a8a;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        /* Footer / QR Code */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 4px solid #3b82f6;
+        }
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .footer-text strong {
+            color: #60a5fa;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .qr-code {
+            background: white;
+            padding: 6px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .qr-code img {
+            width: 95px;
+            height: 95px;
+        }
+
+        /* Decoration */
+        .circle-decor {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(59, 130, 246, 0.04);
+            border-radius: 50%;
+            top: 30%;
+            left: -120px;
+            z-index: 0;
+        }
+        
+        /* Make content be above decorations */
+        .content { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        
+        <div class="circle-decor"></div>
+
+        <div class="header">
+            <div class="urgent-deadline">🚨 Paper Submission Deadline: July 1, 2026 🚨</div>
+            <h1>AgenticOS 2026</h1>
+            <h2>The 2nd Workshop on Operating Systems Design for AI Agents</h2>
+            <div class="meta-info">
+                📍 Congress Hotel Prague, Czechia &nbsp;|&nbsp; 📅 Sept 29, 2026 &nbsp;|&nbsp; Co-located with SOSP 2026
+            </div>
+        </div>
+
+        <div class="content">
+            
+            <div class="col">
+                <h3>The Challenge</h3>
+                <p class="intro-lead">
+                    We are standing at the precipice of a computing revolution. The legacy OS is no longer enough.
+                </p>
+                <p>
+                    AI agents have outgrown their experimental sandboxes. They are evolving into always-on, autonomous entities that plan, invoke external tools, collaborate, and dynamically alter their environments. Yet, the very foundation they run on—operating systems built on decades-old abstractions like traditional processes, threads, and sockets—is holding them back. These systems were simply never built for semantically rich, adaptive AI workloads.
+                </p>
+                <p>
+                    <strong>To unleash AI at scale, the OS itself must become agentic.</strong> We must rethink isolation from the kernel up, redefine scheduling for non-deterministic workloads, and invent semantics-aware resource management. Join us in architecting the future.
+                </p>
+
+                <h3 style="margin-top: 18px;">Core Themes & Topics</h3>
+                <ul>
+                    <li><strong>New Abstractions:</strong> Process, container, and multikernel enhancements tailored for agent execution.</li>
+                    <li><strong>Dynamic Sandboxing:</strong> Lightweight, iron-clad runtimes for executing unverified, agent-generated code.</li>
+                    <li><strong>Semantic Scheduling:</strong> Resource management aware of multi-agent and LLM prompt workloads.</li>
+                    <li><strong>Episodic Memory:</strong> Long-lived state abstractions managing context and prompt histories natively.</li>
+                    <li><strong>Agent Observability:</strong> Deep provenance tracking and debugging for autonomous operations.</li>
+                    <li><strong>Compiler–OS Co-design:</strong> Adaptive, agent-aware JIT execution strategies.</li>
+                    <li><strong>Self-Managing Systems:</strong> Agents taking the wheel for kernel tuning, anomaly detection, and failure recovery.</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h3>Call for Papers</h3>
+                <p>We are actively seeking pioneers, researchers, and open-source practitioners to share position papers, real-world experience reports, and breakthrough research. <em>(ACM double-column format).</em></p>
+                
+                <div class="track-box">
+                    <h4>Track 1: Vision Papers (1-2 pages)</h4>
+                    <p style="margin:0;">Spark the debate. Pitch early-stage ideas, bold position statements, ongoing projects, demos, or critical insights learned the hard way from production systems.</p>
+                </div>
+                
+                <div class="track-box">
+                    <h4>Track 2: Research Papers (Up to 6 pages)</h4>
+                    <p style="margin:0;">Define the science. Submit complete architectural concepts, rigorous research results, and detailed experience reports.</p>
+                </div>
+
+                <h3 style="margin-top: 18px;">Critical Dates</h3>
+                <div class="dates-box">
+                    <div class="date-row">
+                        <span class="date-label">Paper Submission</span>
+                        <span class="date-value">July 1, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Acceptance Notice</span>
+                        <span class="date-value">August 7, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Camera-Ready</span>
+                        <span class="date-value">August 29, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Workshop Date</span>
+                        <span class="date-value">September 29, 2026</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 18px;">The Organizers</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><strong>Yubin Xia & Dong Du</strong> — Shanghai Jiao Tong Univ.</li>
+                    <li><strong>Cong Wang</strong> — Multikernel Technologies</li>
+                    <li><strong>Wenhui Zhang</strong> — Roblox</li>
+                    <li><strong>Yusheng Zheng</strong> — UC Santa Cruz</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">
+                <strong>Join the Revolution. Submit Today.</strong><br>
+                Scan the QR code to read the full CFP and submit your paper via HotCRP.<br>
+                <span style="color: #cbd5e1; font-family: monospace; font-size: 14px;">https://os-for-agent.github.io/</span><br>
+                <span style="color: #94a3b8; font-size: 12px; margin-top: 4px; display: inline-block;">Primary Contact: xiayubin@sjtu.edu.cn</span>
+            </div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://os-for-agent.github.io/" alt="QR Code to OS For Agent">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
