@@ -102,17 +102,19 @@
             letter-spacing: 0.5px;
         }
         p {
-            font-size: 12px;
-            line-height: 1.55;
+            font-size: 13px;
+            line-height: 1.5;
             color: #334155;
             text-align: justify;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .intro-lead {
-            font-size: 13px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         ul {
             padding-left: 18px;
@@ -161,6 +163,9 @@
             color: #1e3a8a;
             font-size: 13px;
             text-transform: uppercase;
+        }
+        .track-box p {
+            font-size: 12px;
         }
 
         /* Footer / QR Code */
@@ -233,16 +238,16 @@
             <div class="col">
                 <h3>The Challenge</h3>
                 <p class="intro-lead">
-                    We are standing at the precipice of a computing revolution. The legacy OS is no longer enough.
+                    The legacy OS is holding AI back.
                 </p>
                 <p>
-                    AI agents have outgrown their experimental sandboxes. They are evolving into always-on, autonomous entities that plan, invoke external tools, collaborate, and dynamically alter their environments. Yet, the very foundation they run on—operating systems built on decades-old abstractions like traditional processes, threads, and sockets—is holding them back. These systems were simply never built for semantically rich, adaptive AI workloads.
+                    AI agents have outgrown their sandboxes. Today's autonomous agents plan, invoke tools, and collaborate continuously. Yet, they are bottlenecked by decades-old OS abstractions—processes, threads, and sockets—that were never built for dynamic, semantically rich AI workloads.
                 </p>
                 <p>
-                    <strong>To unleash AI at scale, the OS itself must become agentic.</strong> We must rethink isolation from the kernel up, redefine scheduling for non-deterministic workloads, and invent semantics-aware resource management. Join us in architecting the future.
+                    <strong>To unleash AI at scale, the OS itself must become agentic.</strong> We must rebuild from the kernel up: rethinking isolation, semantic scheduling, and context management. 
                 </p>
 
-                <h3 style="margin-top: 18px;">Core Themes & Topics</h3>
+                <h3 style="margin-top: 25px;">Core Themes & Topics</h3>
                 <ul>
                     <li><strong>New Abstractions:</strong> Process, container, and multikernel enhancements tailored for agent execution.</li>
                     <li><strong>Dynamic Sandboxing:</strong> Lightweight, iron-clad runtimes for executing unverified, agent-generated code.</li>
@@ -256,11 +261,11 @@
 
             <div class="col">
                 <h3>Call for Papers</h3>
-                <p>We are actively seeking pioneers, researchers, and open-source practitioners to share position papers, real-world experience reports, and breakthrough research. <em>(ACM double-column format).</em></p>
+                <p style="font-size: 12px;">We are actively seeking pioneers, researchers, and open-source practitioners to share position papers, real-world experience reports, and breakthrough research. <em>(ACM double-column format).</em></p>
                 
                 <div class="track-box">
                     <h4>Track 1: Vision Papers (1-2 pages)</h4>
-                    <p style="margin:0;">Spark the debate. Pitch early-stage ideas, bold position statements, ongoing projects, demos, or critical insights learned the hard way from production systems.</p>
+                    <p style="margin:0;">Spark the debate. Pitch early-stage ideas, bold position statements, ongoing projects, demos, or critical insights from production systems.</p>
                 </div>
                 
                 <div class="track-box">
@@ -268,7 +273,7 @@
                     <p style="margin:0;">Define the science. Submit complete architectural concepts, rigorous research results, and detailed experience reports.</p>
                 </div>
 
-                <h3 style="margin-top: 18px;">Critical Dates</h3>
+                <h3 style="margin-top: 20px;">Critical Dates</h3>
                 <div class="dates-box">
                     <div class="date-row">
                         <span class="date-label">Paper Submission</span>
@@ -288,7 +293,7 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 18px;">The Organizers</h3>
+                <h3 style="margin-top: 20px;">The Organizers</h3>
                 <ul style="list-style-type: none; padding-left: 0;">
                     <li><strong>Yubin Xia & Dong Du</strong> — Shanghai Jiao Tong Univ.</li>
                     <li><strong>Cong Wang</strong> — Multikernel Technologies</li>
