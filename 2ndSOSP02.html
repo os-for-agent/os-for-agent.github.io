@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgenticOS 2026 - 终极完美版</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        /* 强制全局盒模型，防止 padding 撑开尺寸 */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* US Letter 页面设置 */
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e2e8f0;
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 海报主容器 (精准锁定 8.5 x 11 英寸) */
+        .poster-container {
+            width: 8.5in;
+            height: 11in;
+            background: #ffffff;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部横幅 */
+        .header {
+            flex-shrink: 0; /* 锁定高度，防止被挤压 */
+            background: linear-gradient(135deg, #020617 0%, #1e3a8a 50%, #2563eb 100%);
+            color: #ffffff;
+            padding: 26px 30px 20px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .urgent-deadline {
+            background: #dc2626;
+            color: white;
+            display: inline-block;
+            padding: 8px 26px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 13.5px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            font-family: 'Inter', sans-serif;
+        }
+        .header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            color: #93c5fd;
+            letter-spacing: 0.5px;
+        }
+        .header .meta-info {
+            background: rgba(255, 255, 255, 0.12);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 内容版面布局 */
+        .content {
+            padding: 22px 35px;
+            flex: 1; /* 占据剩余所有空间 */
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 28px;
+            z-index: 1;
+        }
+
+        /* 模块标题与正文 */
+        h3 {
+            font-size: 20px;
+            color: #0f172a;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #334155;
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+        .intro-lead {
+            font-size: 17px;
+            font-weight: 800;
+            color: #dc2626;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 核心主题列表 */
+        ul {
+            padding-left: 16px;
+            margin: 0;
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        li {
+            margin-bottom: 8px;
+            list-style-type: square;
+        }
+
+        /* 论文赛道卡片 */
+        .track-box {
+            background: #f8fafc;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2563eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .track-box h4 {
+            margin: 0 0 4px 0;
+            color: #1e3a8a;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .track-box p {
+            font-size: 12px;
+            margin: 0;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* 关键日期看板 */
+        .dates-box {
+            background: #fff5f5;
+            border-left: 4px solid #dc2626;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .date-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+            border-bottom: 1px dashed #fca5a5;
+            padding-bottom: 4px;
+        }
+        .date-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .date-label { font-weight: 700; color: #1e293b; }
+        .date-value { color: #dc2626; font-weight: 800;}
+
+        /* 英文组织者列表 */
+        .organizers-list {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #334155;
+        }
+        .organizers-list div {
+            margin-bottom: 5px;
+        }
+        .organizers-list strong {
+            color: #0f172a;
+            font-family: 'Inter', sans-serif;
+        }
+        .organizers-list span {
+            color: #64748b;
+            font-size: 11.5px;
+            font-style: italic;
+        }
+
+        /* 底部信息与二维码 (重点保护区域) */
+        .footer {
+            flex-shrink: 0; /* 锁定高度，绝对不被中间内容挤压 */
+            background: #020617;
+            color: white;
+            padding: 18px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 4px solid #2563eb;
+            z-index: 2;
+        }
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .footer-text strong {
+            color: #3b82f6;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+        .qr-code {
+            background: white;
+            padding: 6px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .qr-code img {
+            width: 90px;
+            height: 90px;
+            display: block; /* 消除 img 底部的幽灵空白 */
+        }
+
+        /* 背景装饰 */
+        .circle-decor {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(37, 99, 235, 0.03);
+            border-radius: 50%;
+            top: 25%;
+            left: -150px;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        
+        <div class="circle-decor"></div>
+
+        <div class="header">
+            <div class="urgent-deadline">⚠️ 倒计时：论文提交截止 2026年7月1日 ⚠️</div>
+            <h1>AgenticOS 2026</h1>
+            <h2>The 2nd Workshop on Operating Systems Design for AI Agents</h2>
+            <div class="meta-info">
+                📍 Prague, Czechia &nbsp;|&nbsp; 📅 September 29, 2026 &nbsp;|&nbsp; Co-located with <strong>SOSP 2026</strong>
+            </div>
+        </div>
+
+        <div class="content">
+            
+            <div class="col">
+                <h3>向陈旧的计算架构宣战！</h3>
+                
+                <p class="intro-lead">
+                    底层的系统内核，正在成为 AI 进化的最大瓶颈。
+                </p>
+                <p>
+                    应用层早已进入大模型时代，但 AI Agent 却被迫运行在几十年前为“死板进程”设计的陈旧操作系统上！简而言之，<strong>要释放 AI 的终极潜能，OS 必须彻底重构。</strong>我们需要从底层重新定义隔离、调度与记忆。
+                </p>
+
+                <h3 style="margin-top: 22px;">火热征集：核心研究方向</h3>
+                <ul>
+                    <li><strong>重塑底层抽象：</strong> 专为智能体量身定制的进程、容器及多内核架构。</li>
+                    <li><strong>硬核沙盒破局：</strong> 零信任的轻量级虚拟化运行环境，强力镇压任何失控代码。</li>
+                    <li><strong>语义感知调度：</strong> 跨越传统时间片，能看懂大模型 Prompt 复杂度的全新调度法则。</li>
+                    <li><strong>原生情景记忆：</strong> 将智能体上下文直接写入内核级的长生命周期状态空间。</li>
+                    <li><strong>上帝视角观测：</strong> 针对不可预测的智能体执行流，实施全栈深度的因果溯源。</li>
+                    <li><strong>Agent接管系统：</strong> 让 Agent 执掌内核，实现自适应调优与疯狂的故障自愈。</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h3>提交你的代码与思想</h3>
+                <p style="font-size: 12px; color: #475569; margin-bottom: 12px;">征集开创性想法与工业界硬核实战经验。(ACM 双栏格式)</p>
+                
+                <div class="track-box">
+                    <h4>Track 1: Vision Papers (1–2页)</h4>
+                    <p><strong>灵感闪现与前沿脑洞。</strong>征集激进的观点、大胆的猜想、正在孵化的原型项目或生产系统中的严峻痛点。</p>
+                </div>
+                
+                <div class="track-box">
+                    <h4>Track 2: Research Papers (最多6页)</h4>
+                    <p><strong>科学边界与硬核工程。</strong>征集完整的创新系统架构设计、严谨的实验评测数据或深度经验报告。</p>
+                </div>
+
+                <h3 style="margin-top: 18px;">关键节点</h3>
+                <div class="dates-box">
+                    <div class="date-row">
+                        <span class="date-label">Paper Submission Deadline</span>
+                        <span class="date-value">July 1, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Notification of Acceptance</span>
+                        <span class="date-value">August 7, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Camera-Ready Deadline</span>
+                        <span class="date-value">August 29, 2026</span>
+                    </div>
+                    <div class="date-row">
+                        <span class="date-label">Workshop Date</span>
+                        <span class="date-value">September 29, 2026</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 18px;">Organizers</h3>
+                <div class="organizers-list">
+                    <div><strong>Yubin Xia & Dong Du</strong> — <span>Shanghai Jiao Tong University</span></div>
+                    <div><strong>Cong Wang</strong> — <span>Multikernel Technologies</span></div>
+                    <div><strong>Wenhui Zhang</strong> — <span>Roblox</span></div>
+                    <div><strong>Yusheng Zheng</strong> — <span>UC Santa Cruz</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">
+                <strong>JOIN THE REVOLUTION. SUBMIT TODAY.</strong><br>
+                立即扫描右侧二维码，阅读完整 CFP 并通过 HotCRP 提交开创性成果！<br>
+                <span style="color: #60a5fa; font-family: monospace; font-size: 14px; font-weight: bold; display: inline-block; margin-top: 4px;">https://os-for-agent.github.io/</span><br>
+                <span style="color: #94a3b8; font-size: 11px; display: block; margin-top: 2px;">Primary Contact: xiayubin@sjtu.edu.cn</span>
+            </div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://os-for-agent.github.io/" alt="QR Code to OS For Agent">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
