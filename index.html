@@ -308,91 +308,345 @@
           </section>
 
           <section id="schedule">
-            <details class="border border-slate-200 rounded-lg group">
-              <summary
-                class="flex items-center justify-between cursor-pointer p-5 hover:bg-slate-50 transition-colors"
-              >
-                <h2 class="text-2xl font-serif font-bold text-slate-900">
-                  Workshop Schedule
-                </h2>
-                <i
-                  data-lucide="plus"
-                  class="w-5 h-5 text-slate-400 group-open:hidden"
-                ></i>
-                <i
-                  data-lucide="minus"
-                  class="w-5 h-5 text-slate-400 hidden group-open:block"
-                ></i>
-              </summary>
-              <div class="px-5 pb-5">
-                <p class="mb-6 text-slate-600">
-                  Detailed SOSP 2026 workshop schedule: TBA
-                </p>
-                <div class="border border-slate-200 rounded-lg overflow-hidden">
-                  <table class="w-full text-sm">
-                    <thead>
-                      <tr class="bg-slate-900 text-white text-left">
-                        <th class="px-4 py-3 font-mono font-medium w-40">
-                          Time
-                        </th>
-                        <th class="px-4 py-3 font-medium w-32">Session</th>
-                        <th class="px-4 py-3 font-medium">Details</th>
-                      </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                      <tr class="bg-slate-50">
-                        <td
-                          class="px-4 py-3 font-mono text-slate-600 align-top"
-                        >
-                          TBA
-                        </td>
-                        <td class="px-4 py-3 align-top">
-                          <span
-                            class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-2 py-0.5 rounded"
-                            >Program</span
-                          >
-                        </td>
-                        <td class="px-4 py-3 text-slate-700">
-                          AgenticOS 2026 workshop program will be announced.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          class="px-4 py-3 font-mono text-slate-600 align-top"
-                        >
-                          TBA
-                        </td>
-                        <td class="px-4 py-3 align-top">
-                          <span
-                            class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded"
-                            >Talks</span
-                          >
-                        </td>
-                        <td class="px-4 py-3 text-slate-700">
-                          Accepted talks, speakers, and ordering are TBA.
-                        </td>
-                      </tr>
-                      <tr class="bg-slate-50">
-                        <td
-                          class="px-4 py-3 font-mono text-slate-600 align-top"
-                        >
-                          TBA
-                        </td>
-                        <td class="px-4 py-3 align-top">
-                          <span
-                            class="inline-block bg-amber-200 text-amber-900 text-xs font-bold px-2 py-0.5 rounded"
-                            >Breaks</span
-                          >
-                        </td>
-                        <td class="px-4 py-3 text-slate-700">
-                          Breaks, social events, and room assignment are TBA.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
+            <h2
+              class="text-2xl font-serif font-bold text-slate-900 mb-6 flex items-center gap-2"
+            >
+              Workshop Schedule
+            </h2>
+            <p class="mb-6 text-slate-600">
+              September 29, 2026 — Afternoon session (local time)
+            </p>
+            <div class="border border-slate-200 rounded-lg overflow-hidden">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-slate-900 text-white text-left">
+                    <th class="px-4 py-3 font-mono font-medium w-40">Time</th>
+                    <th class="px-4 py-3 font-medium w-32">Session</th>
+                    <th class="px-4 py-3 font-medium">Details</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      1:30pm – 1:35pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-slate-200 text-slate-700 text-xs font-bold px-2 py-0.5 rounded"
+                        >Opening</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Workshop Opening Remarks + Best Paper Awards (5 min)
+                      <div class="text-xs text-slate-500 mt-1">
+                        #18 Preserving GPU Profiling Accuracy under Concurrent
+                        GPU-Coding Agent Workloads; #27 AgentProf: Semantic
+                        Profiling for AI Agents
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      1:35pm – 2:20pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-academic-100 text-academic-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Keynote</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Keynote Talk by
+                      <strong>Laurent Bindschaedler</strong> (45 min)
+                      <div class="text-xs text-slate-500 mt-1">Title: TBD</div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:20pm – 2:35pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong>#2 Isolation in the Age of Agents</strong>
+                      <div class="text-xs text-slate-500 mt-1">
+                        Isolation and Risks
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:35pm – 2:50pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#8 Agent libOS: A Runtime Substrate for
+                        Capability-Controlled Self-Evolving LLM Agents</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Isolation and Risks
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      2:50pm – 3:05pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#21 An AgentOS Needs a Formal Representation of
+                        Agents</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Isolation and Risks
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-amber-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:05pm – 3:30pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-amber-200 text-amber-900 text-xs font-bold px-2 py-0.5 rounded"
+                        >Break</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      Coffee Break (30 min)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:30pm – 3:45pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#18 Preserving GPU Profiling Accuracy under Concurrent
+                        GPU-Coding Agent Workloads</strong
+                      >
+                      (Best Paper)
+                      <div class="text-xs text-slate-500 mt-1">Profiling</div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      3:45pm – 4:00pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#27 AgentProf: Semantic Profiling for AI Agents</strong
+                      >
+                      (Best Paper)
+                      <div class="text-xs text-slate-500 mt-1">Profiling</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:00pm – 4:15pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#26 Patient Bytes: A Reliability-Budgeted Scheduler for
+                        Agentic LLM Workflows</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Scheduling and Budget
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:15pm – 4:30pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#30 The Irreversibility Budget: Fleet-Level Risk
+                        Accounting and Admission Control for Agent Operating
+                        Systems</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">
+                        Scheduling and Budget
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:30pm – 4:45pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#1 TypeGo: An OS Runtime for Embodied Agents</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">OS Structure</div>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      4:45pm – 5:00pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Research Paper</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#31 When Agent Context Goes Stale: Incoherence in
+                        Volatile Agent Context</strong
+                      >
+                      <div class="text-xs text-slate-500 mt-1">OS Structure</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:00pm – 5:05pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong>#3 Formal Methods as the Harness for AIOS</strong>
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:05pm – 5:10pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#29 LLM Agent Capabilities Should Follow Task Intent
+                        and Context Source</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:10pm – 5:15pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#20 Securing Agentic AI with OS-Level Intent-Driven
+                        Capabilities</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:15pm – 5:20pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#13 Agate: Capability Microkernels as a Natural
+                        Substrate for AI Agents</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:20pm – 5:25pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#19 Externalization Barriers: An OS Abstraction for
+                        Untrusted Agent Exploration</strong
+                      >
+                    </td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-600 align-top">
+                      5:25pm – 5:30pm
+                    </td>
+                    <td class="px-4 py-3 align-top">
+                      <span
+                        class="inline-block bg-violet-100 text-violet-800 text-xs font-bold px-2 py-0.5 rounded"
+                        >Lightning Talk</span
+                      >
+                    </td>
+                    <td class="px-4 py-3 text-slate-700">
+                      <strong
+                        >#5 The Abstractions Are Slipping: Four OS Mismatches in
+                        the Agent Era</strong
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section id="topics">

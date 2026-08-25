@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgenticOS 2026 - 议程海报</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @page {
+        size: letter;
+        margin: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #e2e8f0;
+        font-family:
+          "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue",
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .poster-container {
+        width: 8.5in;
+        height: 11in;
+        background: #ffffff;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        flex-shrink: 0;
+        background: linear-gradient(
+          135deg,
+          #020617 0%,
+          #1e3a8a 50%,
+          #2563eb 100%
+        );
+        color: #ffffff;
+        padding: 18px 28px 14px 28px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .urgent-deadline {
+        background: #059669;
+        color: white;
+        display: inline-block;
+        padding: 7px 22px;
+        border-radius: 30px;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 20px rgba(5, 150, 105, 0.45);
+      }
+
+      .header h1 {
+        font-size: 42px;
+        font-weight: 800;
+        margin: 0 0 3px 0;
+        letter-spacing: 2px;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        font-family: "Inter", sans-serif;
+      }
+      .header h2 {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+        color: #93c5fd;
+        letter-spacing: 0.4px;
+      }
+      .header .meta-info {
+        background: rgba(255, 255, 255, 0.12);
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .content {
+        padding: 14px 26px 10px 26px;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 20px;
+        z-index: 1;
+      }
+
+      h3 {
+        font-size: 16px;
+        color: #0f172a;
+        border-bottom: 3px solid #2563eb;
+        padding-bottom: 3px;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 1.5;
+        color: #334155;
+        text-align: justify;
+        margin-bottom: 8px;
+      }
+      .intro-lead {
+        font-size: 14px;
+        font-weight: 800;
+        color: #dc2626;
+        margin-bottom: 5px;
+        letter-spacing: 0.3px;
+      }
+
+      ul {
+        padding-left: 15px;
+        margin: 0;
+        font-size: 11.5px;
+        color: #334155;
+        line-height: 1.45;
+      }
+      li {
+        margin-bottom: 5px;
+        list-style-type: square;
+      }
+
+      .schedule {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      }
+      .sched-row {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 8px;
+        padding: 6px 8px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 10.5px;
+        line-height: 1.35;
+      }
+      .sched-row:last-child {
+        border-bottom: none;
+      }
+      .sched-row:nth-child(odd) {
+        background: #f8fafc;
+      }
+      .sched-row.break {
+        background: #fff5f5;
+      }
+      .sched-time {
+        font-weight: 800;
+        color: #1e3a8a;
+        font-variant-numeric: tabular-nums;
+        font-family: "Inter", sans-serif;
+        white-space: nowrap;
+      }
+      .sched-label {
+        display: inline-block;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        background: #e0f2fe;
+        color: #075985;
+        padding: 1px 6px;
+        border-radius: 4px;
+        margin-bottom: 2px;
+      }
+      .sched-label.keynote {
+        background: #dbeafe;
+        color: #1e3a8a;
+      }
+      .sched-label.papers {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .sched-label.break {
+        background: #fecaca;
+        color: #991b1b;
+      }
+      .sched-label.lightning {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
+      .sched-papers {
+        color: #475569;
+        margin-top: 2px;
+      }
+      .sched-papers div {
+        margin-top: 1px;
+      }
+      .best {
+        color: #b45309;
+        font-weight: 800;
+      }
+
+      .organizers-list {
+        font-size: 11.5px;
+        line-height: 1.45;
+        color: #334155;
+      }
+      .organizers-list div {
+        margin-bottom: 3px;
+      }
+      .organizers-list strong {
+        color: #0f172a;
+        font-family: "Inter", sans-serif;
+      }
+      .organizers-list span {
+        color: #64748b;
+        font-size: 11px;
+        font-style: italic;
+      }
+
+      .footer {
+        flex-shrink: 0;
+        background: #020617;
+        color: white;
+        padding: 14px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 4px solid #2563eb;
+        z-index: 2;
+      }
+      .footer-text {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .footer-text strong {
+        color: #3b82f6;
+        font-size: 15px;
+        letter-spacing: 0.8px;
+      }
+      .qr-code {
+        background: white;
+        padding: 5px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      }
+      .qr-code img {
+        width: 82px;
+        height: 82px;
+        display: block;
+      }
+
+      .circle-decor {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: rgba(37, 99, 235, 0.03);
+        border-radius: 50%;
+        top: 25%;
+        left: -150px;
+        z-index: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster-container">
+      <div class="circle-decor"></div>
+
+      <div class="header">
+        <div class="urgent-deadline">议程发布 · 9月29日下午场</div>
+        <h1>AgenticOS 2026</h1>
+        <h2>The 2nd Workshop on Operating Systems Design for AI Agents</h2>
+        <div class="meta-info">
+          📍 Prague, Czechia &nbsp;|&nbsp; 📅 September 29, 2026 &nbsp;|&nbsp;
+          Co-located with <strong>SOSP 2026</strong>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="col">
+          <h3>向陈旧的计算架构宣战！</h3>
+          <p class="intro-lead">底层的系统内核，正在成为 AI 进化的最大瓶颈。</p>
+          <p>
+            应用层早已进入大模型时代，但 AI Agent
+            却被迫运行在几十年前为“死板进程”设计的陈旧操作系统上！
+            <strong>要释放 AI 的终极潜能，OS 必须彻底重构。</strong>
+          </p>
+
+          <h3 style="margin-top: 12px">核心研究方向</h3>
+          <ul>
+            <li>
+              <strong>重塑底层抽象：</strong>
+              专为智能体量身定制的进程、容器及多内核架构。
+            </li>
+            <li>
+              <strong>硬核沙盒破局：</strong>
+              零信任的轻量级虚拟化运行环境。
+            </li>
+            <li>
+              <strong>语义感知调度：</strong>
+              能看懂大模型 Prompt 复杂度的全新调度法则。
+            </li>
+            <li>
+              <strong>原生情景记忆：</strong>
+              将智能体上下文写入内核级长生命周期状态空间。
+            </li>
+            <li>
+              <strong>上帝视角观测：</strong>
+              针对智能体执行流的全栈因果溯源。
+            </li>
+            <li>
+              <strong>Agent 接管系统：</strong>
+              自适应调优与故障自愈。
+            </li>
+          </ul>
+
+          <h3 style="margin-top: 12px">Organizers</h3>
+          <div class="organizers-list">
+            <div>
+              <strong>Yubin Xia &amp; Dong Du</strong> —
+              <span>Shanghai Jiao Tong University</span>
+            </div>
+            <div>
+              <strong>Cong Wang</strong> — <span>Multikernel Technologies</span>
+            </div>
+            <div><strong>Wenhui Zhang</strong> — <span>Roblox</span></div>
+            <div>
+              <strong>Yusheng Zheng</strong> — <span>UC Santa Cruz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <h3>Workshop Schedule 下午议程</h3>
+          <p style="margin-bottom: 8px; font-size: 11px; text-align: left">
+            September 29, 2026 — Afternoon session (local time)
+          </p>
+          <div class="schedule">
+            <div class="sched-row">
+              <div class="sched-time">1:30–1:35</div>
+              <div>
+                <span class="sched-label">开幕 Opening</span>
+                <div>
+                  开幕致辞 + 最佳论文颁奖
+                  <span class="best">#18, #27</span>
+                </div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">1:35–2:20</div>
+              <div>
+                <span class="sched-label keynote">特邀报告 Keynote</span>
+                <div><strong>Laurent Bindschaedler</strong> — Title TBD</div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">2:20–3:05</div>
+              <div>
+                <span class="sched-label papers">隔离与风险 Isolation</span>
+                <div class="sched-papers">
+                  <div>#2 Isolation in the Age of Agents</div>
+                  <div>
+                    #8 Agent libOS: A Runtime Substrate for
+                    Capability-Controlled Self-Evolving LLM Agents
+                  </div>
+                  <div>
+                    #21 An AgentOS Needs a Formal Representation of Agents
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sched-row break">
+              <div class="sched-time">3:05–3:30</div>
+              <div>
+                <span class="sched-label break">茶歇 Break</span>
+                <div>Coffee break</div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">3:30–4:00</div>
+              <div>
+                <span class="sched-label papers">剖析 Profiling</span>
+                <div class="sched-papers">
+                  <div>
+                    <span class="best">Best Paper</span> #18 Preserving GPU
+                    Profiling Accuracy under Concurrent GPU-Coding Agent
+                    Workloads
+                  </div>
+                  <div>
+                    <span class="best">Best Paper</span> #27 AgentProf: Semantic
+                    Profiling for AI Agents
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">4:00–4:30</div>
+              <div>
+                <span class="sched-label papers">调度与预算 Scheduling</span>
+                <div class="sched-papers">
+                  <div>
+                    #26 Patient Bytes: A Reliability-Budgeted Scheduler for
+                    Agentic LLM Workflows
+                  </div>
+                  <div>
+                    #30 The Irreversibility Budget: Fleet-Level Risk Accounting
+                    and Admission Control for Agent Operating Systems
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">4:30–5:00</div>
+              <div>
+                <span class="sched-label papers">OS 结构 Structure</span>
+                <div class="sched-papers">
+                  <div>#1 TypeGo: An OS Runtime for Embodied Agents</div>
+                  <div>
+                    #31 When Agent Context Goes Stale: Incoherence in Volatile
+                    Agent Context
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sched-row">
+              <div class="sched-time">5:00–5:30</div>
+              <div>
+                <span class="sched-label lightning">闪电报告 Lightning</span>
+                <div class="sched-papers">
+                  <div>#3 Formal Methods as the Harness for AIOS</div>
+                  <div>
+                    #29 LLM Agent Capabilities Should Follow Task Intent and
+                    Context Source
+                  </div>
+                  <div>
+                    #20 Securing Agentic AI with OS-Level Intent-Driven
+                    Capabilities
+                  </div>
+                  <div>
+                    #13 Agate: Capability Microkernels as a Natural Substrate
+                    for AI Agents
+                  </div>
+                  <div>
+                    #19 Externalization Barriers: An OS Abstraction for Untrusted
+                    Agent Exploration
+                  </div>
+                  <div>
+                    #5 The Abstractions Are Slipping: Four OS Mismatches in the
+                    Agent Era
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-text">
+          <strong>JOIN US IN PRAGUE.</strong><br />
+          扫描右侧二维码，查看完整议程与论文列表。<br />
+          <span
+            style="
+              color: #60a5fa;
+              font-family: monospace;
+              font-size: 13px;
+              font-weight: bold;
+              display: inline-block;
+              margin-top: 3px;
+            "
+            >https://os-for-agent.github.io/</span
+          ><br />
+          <span
+            style="
+              color: #94a3b8;
+              font-size: 11px;
+              display: block;
+              margin-top: 2px;
+            "
+            >Primary Contact: xiayubin@sjtu.edu.cn</span
+          >
+        </div>
+        <div class="qr-code">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://os-for-agent.github.io/"
+            alt="QR Code to OS For Agent"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
