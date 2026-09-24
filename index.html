@@ -18,7 +18,7 @@
     />
     <meta
       property="og:description"
-      content="Call for Papers: The 2nd Workshop on Operating Systems Design for AI Agents, co-located with SOSP 2026."
+      content="Program for the 2nd Workshop on Operating Systems Design for AI Agents, co-located with SOSP 2026 in Prague."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://os-for-agent.github.io/" />
@@ -33,7 +33,7 @@
     />
     <meta
       name="twitter:description"
-      content="Call for Papers: The 2nd Workshop on Operating Systems Design for AI Agents, co-located with SOSP 2026."
+      content="Program for the 2nd Workshop on Operating Systems Design for AI Agents, co-located with SOSP 2026 in Prague."
     />
     <meta
       name="twitter:image"
@@ -102,8 +102,8 @@
         "@type": "Event",
         "name": "AgenticOS: 2nd Workshop on Operating Systems Design for AI Agents",
         "description": "The 2nd Workshop on Operating Systems Design for AI Agents, co-located with SOSP 2026. Explore OS primitives, isolation models, and scheduling for agent workloads.",
-        "startDate": "2026-10-29",
-        "endDate": "2026-10-29",
+        "startDate": "2026-09-29",
+        "endDate": "2026-09-29",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
@@ -111,8 +111,8 @@
           "name": "SOSP 2026",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Seoul",
-            "addressCountry": "KR"
+            "addressLocality": "Prague",
+            "addressCountry": "CZ"
           }
         },
         "image": "https://os-for-agent.github.io/AgenticOS02Eng.png",
@@ -351,7 +351,135 @@
                 <div class="px-4 py-3 text-sm text-slate-700">
                   <strong>Laurent Bindschaedler</strong> (Max Planck Institute
                   for Software Systems)
-                  <div class="text-xs text-slate-500 mt-1">Title: TBD</div>
+                  <div class="font-semibold text-slate-900 mt-1">
+                    The Harness Wars: Why Agents Need a POSIX Before a Kernel
+                  </div>
+                  <details class="mt-3 text-xs text-slate-600">
+                    <summary
+                      class="cursor-pointer font-semibold text-academic-800 hover:text-academic-600"
+                    >
+                      Keynote Abstract &amp; Speaker Bio
+                    </summary>
+                    <div class="mt-3 space-y-4 leading-relaxed">
+                      <div class="space-y-2">
+                        <p class="font-semibold text-slate-800">Abstract</p>
+                        <p>
+                          Consider three failures. An agent places a supplier
+                          order through a web portal, the request times out
+                          after the order has already been accepted, and the
+                          agent retries. Two orders ship, and the task is scored
+                          a success. Another agent compacts its context,
+                          silently drops a standing rule, and deploys to the
+                          release branch without noticing. A human approves a
+                          pull request, a rebase changes the reviewed code, the
+                          workflow retries and reuses the original approval, and
+                          unreviewed code is merged. In each case the model's
+                          decision was reasonable and the outcome was wrong.
+                          Rules were broken, but no runtime contract stated
+                          them.
+                        </p>
+                        <p>
+                          Agents add a problem that processes did not pose. An
+                          operating system never judged whether a program's
+                          actions made sense. It confined the program and left
+                          that judgment to whoever wrote it. An agent generates
+                          its own actions, and the guarantees the author used to
+                          carry are not in the model. That judgment now falls to
+                          the runtime between the model and the world, whether
+                          it is called a harness or an agent operating system.
+                          What that runtime must guarantee is the interface we
+                          lack, a kind of POSIX for agents.
+                        </p>
+                        <p>
+                          The field already has many pieces of an agent
+                          operating system (sandboxes, schedulers, memory
+                          managers, kernels) but no shared account of what they
+                          must guarantee, and task success alone cannot show
+                          whether a guarantee held. In this talk, I will sketch
+                          that interface: four contracts, effect, state,
+                          composition, and intent, at different levels of
+                          maturity. For each I will show what we can state
+                          today, an early mechanism where we have one, and the
+                          evidence needed to check it.
+                        </p>
+                      </div>
+                      <div class="space-y-2">
+                        <p class="font-semibold text-slate-800">Speaker Bio</p>
+                        <p>
+                          Laurent Bindschaedler leads the Data Systems Group at
+                          the Max Planck Institute for Software Systems, where
+                          his work sits at the intersection of operating
+                          systems, databases, and machine learning. His group
+                          builds systems for massive-scale data management and
+                          AI, currently focused on agentic AI infrastructure,
+                          LLM-enhanced databases, and benchmarking methodologies
+                          for adaptive systems. He holds a PhD from EPFL and was
+                          a postdoctoral fellow at MIT CSAIL. His work has
+                          appeared at venues including SOSP, ASPLOS, EuroSys,
+                          ICML, EMNLP, and NDSS.
+                        </p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <!-- Sponsor Talk -->
+              <div>
+                <div
+                  class="bg-slate-900 text-white px-4 py-2 flex items-center justify-between gap-4"
+                >
+                  <span class="font-semibold text-sm">Sponsor Talk</span>
+                  <span class="font-mono text-xs text-slate-300"
+                    >2:20pm – 2:35pm</span
+                  >
+                </div>
+                <div class="px-4 py-3 text-sm text-slate-700">
+                  <strong>Hui Wang</strong>
+                  <div class="text-xs text-slate-500 mt-1">
+                    Director, Huawei's Hilbert Institute
+                  </div>
+                </div>
+              </div>
+              <!-- Session: Profiling -->
+              <div>
+                <div
+                  class="bg-slate-900 text-white px-4 py-2 flex items-center justify-between gap-4"
+                >
+                  <span class="font-semibold text-sm">Profiling</span>
+                  <span class="font-mono text-xs text-slate-300"
+                    >2:35pm – 3:00pm</span
+                  >
+                </div>
+                <div class="divide-y divide-slate-100">
+                  <div class="px-4 py-3 text-sm text-slate-700">
+                    <strong
+                      >Preserving GPU Profiling Accuracy under Concurrent
+                      GPU-Coding Agent Workloads</strong
+                    >
+                    <!-- (Best Paper) -->
+                    <div class="text-xs text-slate-500 mt-1">
+                      Yingyi Hao, Xingda Wei, Rong Chen, Haibo Chen (Shanghai
+                      Jiao Tong University)
+                    </div>
+                  </div>
+                  <div class="px-4 py-3 text-sm text-slate-700">
+                    <strong>AgentProf: Semantic Profiling for AI Agents</strong>
+                    <!-- (Best Paper) -->
+                    <div class="text-xs text-slate-500 mt-1">
+                      Yusheng Zheng (UC Santa Cruz), Chaokun Chang, Tianyuan Wu
+                      (HKUST), Wenan Mao, Shuyi Cheng, Tao Ma (Alibaba Group),
+                      Andi Quinn (UC Santa Cruz), Wei Wang (HKUST)
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Break -->
+              <div>
+                <div
+                  class="bg-amber-100 text-amber-900 px-4 py-2 flex items-center justify-between gap-4"
+                >
+                  <span class="font-semibold text-sm">Coffee Break</span>
+                  <span class="font-mono text-xs">3:00pm – 3:30pm</span>
                 </div>
               </div>
               <!-- Session: Isolation and Risks -->
@@ -361,7 +489,7 @@
                 >
                   <span class="font-semibold text-sm">Isolation and Risks</span>
                   <span class="font-mono text-xs text-slate-300"
-                    >2:20pm – 3:05pm</span
+                    >3:30pm – 4:10pm</span
                   >
                 </div>
                 <div class="divide-y divide-slate-100">
@@ -393,50 +521,6 @@
                   </div>
                 </div>
               </div>
-              <!-- Break -->
-              <div>
-                <div
-                  class="bg-amber-100 text-amber-900 px-4 py-2 flex items-center justify-between gap-4"
-                >
-                  <span class="font-semibold text-sm">Coffee Break</span>
-                  <span class="font-mono text-xs"
-                    >3:05pm – 3:30pm</span
-                  >
-                </div>
-              </div>
-              <!-- Session: Profiling -->
-              <div>
-                <div
-                  class="bg-slate-900 text-white px-4 py-2 flex items-center justify-between gap-4"
-                >
-                  <span class="font-semibold text-sm">Profiling</span>
-                  <span class="font-mono text-xs text-slate-300"
-                    >3:30pm – 4:00pm</span
-                  >
-                </div>
-                <div class="divide-y divide-slate-100">
-                  <div class="px-4 py-3 text-sm text-slate-700">
-                    <strong
-                      >Preserving GPU Profiling Accuracy under Concurrent
-                      GPU-Coding Agent Workloads</strong
-                    >
-                    <!-- (Best Paper) -->
-                    <div class="text-xs text-slate-500 mt-1">
-                      Yingyi Hao, Xingda Wei, Rong Chen, Haibo Chen (Shanghai
-                      Jiao Tong University)
-                    </div>
-                  </div>
-                  <div class="px-4 py-3 text-sm text-slate-700">
-                    <strong>AgentProf: Semantic Profiling for AI Agents</strong>
-                    <!-- (Best Paper) -->
-                    <div class="text-xs text-slate-500 mt-1">
-                      Yusheng Zheng (UC Santa Cruz), Chaokun Chang, Tianyuan Wu
-                      (HKUST), Wenan Mao, Shuyi Cheng, Tao Ma (Alibaba Group),
-                      Andi Quinn (UC Santa Cruz), Wei Wang (HKUST)
-                    </div>
-                  </div>
-                </div>
-              </div>
               <!-- Session: Scheduling and Budget -->
               <div>
                 <div
@@ -446,7 +530,7 @@
                     >Scheduling and Budget</span
                   >
                   <span class="font-mono text-xs text-slate-300"
-                    >4:00pm – 4:30pm</span
+                    >4:10pm – 4:35pm</span
                   >
                 </div>
                 <div class="divide-y divide-slate-100">
@@ -482,7 +566,7 @@
                 >
                   <span class="font-semibold text-sm">OS Structure</span>
                   <span class="font-mono text-xs text-slate-300"
-                    >4:30pm – 5:00pm</span
+                    >4:35pm – 5:00pm</span
                   >
                 </div>
                 <div class="divide-y divide-slate-100">
@@ -546,8 +630,8 @@
                   </div>
                   <div class="px-4 py-3 text-sm text-slate-700">
                     <strong
-                      >Agate: Capability Microkernels as a Natural Substrate
-                      for AI Agents</strong
+                      >Agate: Capability Microkernels as a Natural Substrate for
+                      AI Agents</strong
                     >
                     <div class="text-xs text-slate-500 mt-1">
                       Zhao Wei (Huawei 2012 Laboratories)
@@ -555,8 +639,8 @@
                   </div>
                   <div class="px-4 py-3 text-sm text-slate-700">
                     <strong
-                      >Externalization Barriers: An OS Abstraction for
-                      Untrusted Agent Exploration</strong
+                      >Externalization Barriers: An OS Abstraction for Untrusted
+                      Agent Exploration</strong
                     >
                     <div class="text-xs text-slate-500 mt-1">
                       Jinhao Hu, Bardia Mohammadi (Max Planck Institute for
@@ -1127,6 +1211,31 @@
         </aside>
       </div>
     </div>
+
+    <section
+      aria-labelledby="sponsor-heading"
+      class="border-t border-slate-200 bg-white py-12"
+    >
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2
+          id="sponsor-heading"
+          class="text-sm font-semibold uppercase tracking-wider text-slate-500"
+        >
+          Workshop Dinner Sponsor
+        </h2>
+        <a
+          href="https://www.huawei.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex mt-6"
+        >
+          <img src="huawei-logo.svg" alt="Huawei" class="h-12 w-auto" />
+        </a>
+        <p class="mt-4 text-sm text-slate-500">
+          Huawei is generously sponsoring the AgenticOS 2026 workshop dinner.
+        </p>
+      </div>
+    </section>
 
     <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
       <div
