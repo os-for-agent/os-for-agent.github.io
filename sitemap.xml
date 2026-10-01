@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://os-for-agent.github.io/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -117,5 +117,13 @@
   <url>
     <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_31.pdf</loc>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/slides/AgenticOS_SOSP_2026_paper_5_slides.pdf</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/slides/AgenticOS_SOSP_2026_paper_20_slides.pdf</loc>
+    <priority>0.5</priority>
   </url>
 </urlset>
