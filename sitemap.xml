@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://os-for-agent.github.io/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -56,6 +56,66 @@
   </url>
   <url>
     <loc>https://os-for-agent.github.io/papers/AgenticOS_2026_paper_26.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_1.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_2.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_3.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_5.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_8.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_13.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_18.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_19.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_20.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_21.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_26.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_29.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_30.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_31.pdf</loc>
     <priority>0.6</priority>
   </url>
 </urlset>
